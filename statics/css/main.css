@@ -1,0 +1,917 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.row {
+  display: flex;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.d-flex {
+  display: flex !important;
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+  position: relative;
+  width: 100%;
+}
+
+.case {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.case .img {
+  height: 400px;
+}
+
+.img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+}
+
+.container {
+  max-width: 1210px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  z-index: 3;
+}
+.navbar > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .navbar-brand {
+  color: #000;
+}
+
+.navbar-brand {
+  font-weight: 900;
+  font-size: 26px;
+  font-family: poppins, Arial, sans-serif;
+  line-height: 1;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.navbar-brand span {
+  font-style: normal;
+  color: #ffd369;
+}
+
+.navbar-links {
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  flex-direction: row;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.nav-link {
+  display: block;
+}
+
+.navbar-nav > .nav-item > .nav-link {
+  font-size: 18px;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 400;
+}
+
+.nav-item.active > a {
+  color: #ffd369;
+}
+
+.nav-link {
+  color: #000;
+}
+
+.content {
+  position: relative;
+  padding: 7em 0;
+  display: block;
+}
+
+.text {
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.case .text .subheading {
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #000;
+}
+
+.img-box {
+  padding-right: 15px;
+}
+
+.text-box {
+  padding-left: 15px;
+}
+
+.case .text h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.case .text h2 a {
+  color: #000;
+}
+
+h2 {
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.content .text-box.d-flex {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+.media-social {
+  margin-bottom: 1rem;
+}
+
+.media-social a {
+  height: 50px;
+  width: 50px;
+  display: block;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  position: relative;
+  color: #000000;
+  transition: background 0.5s;
+}
+
+.media-social a:hover {
+  background: #ffd369;
+  color: #000000;
+}
+
+.media-social a span {
+  position: absolute;
+  font-size: 26px;
+  top: 25%;
+  left: 25%;
+}
+
+.case .text-box .meta .date {
+  font-size: 12px;
+}
+
+.case .text h2 a:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+ul.col li {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+ul.col li a {
+  color: gray;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+}
+
+ul.col li a.active {
+  background: #ffd369;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.text-center {
+  text-align: center;
+}
+
+footer {
+  font-size: 16px;
+  background: #222831;
+  padding: 5rem 0 1rem 0;
+  position: relative;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.footer-widget h2 {
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+footer .logo {
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  line-height: 1;
+}
+
+footer .box {
+  max-width: 400px;
+}
+
+footer .row {
+  justify-content: space-between;
+}
+
+footer .logo a {
+  color: #fff;
+}
+
+footer p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.footer-text p {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-social a {
+  height: 50px;
+  width: 50px;
+  display: block;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  position: relative;
+  color: #000000;
+  transition: background 0.5s;
+}
+
+.footer-social a span {
+  position: absolute;
+  font-size: 26px;
+  top: 25%;
+  left: 25%;
+}
+
+.footer-social a span.icon-github {
+  color: #fff;
+}
+
+.footer-social a:hover span.icon-github {
+  color: #ffd369;
+}
+
+footer .heading-2 {
+  color: #fff;
+  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.footer-widget div ul {
+  list-style: none;
+}
+
+.footer-widget div ul li {
+  color: #fff;
+  display: table;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  padding-top: 2px;
+  width: 40px;
+  display: table-cell;
+  padding-right: 1rem;
+}
+
+.text {
+  display: table-cell;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+.footer-text {
+  width: 100%;
+}
+
+.banner-box {
+  height: 400px;
+  position: relative;
+}
+.banner-box img {
+  width: 100%;
+  max-height: 400px;
+}
+.banner-box::after {
+  content: "歡迎來到我的部落格 :)";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  color: #fff;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 3rem;
+  transform: translateX(-50%);
+}
+
+.banner-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login {
+  max-width: 290px;
+  width: 100%;
+  margin: 150px auto;
+}
+
+.login-form-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding-bottom: 54px;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.input-wrapper {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.input {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+  outline: none;
+  border: none;
+}
+
+.from-login-btn-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.login-btn {
+  outline: none !important;
+  border: none;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
+  padding: 0 25px;
+  transition: all 0.4s;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+a.login-btn {
+  line-height: 2.5;
+}
+
+i.input-icon {
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  left: 31px;
+  top: 17px;
+}
+
+.content-title {
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.full-post-div {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+
+.full-post-div .post-img {
+  width: 100%;
+  height: 550px;
+  margin-bottom: 2rem;
+}
+
+.post-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.post-body-div {
+  white-space: pre-line;
+  line-height: 1.8;
+  word-break: break-word;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+.post-sidebar {
+  position: fixed;
+  top: 25%;
+  right: 14%;
+  width: 18%;
+}
+
+.post-sidebar h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.post-sidebar .card-content {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+}
+
+.post-sidebar .card-content a {
+  display: block;
+  color: #1a1a1a;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.post-sidebar .card-content .arrow-forward {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #ccc;
+}
+
+.message {
+  width: 100%;
+  margin: 0px auto;
+  padding: 10px 0px;
+  color: #3c763d;
+  background: #dff0d8;
+  border: 1px solid #3c763d;
+  border-radius: 5px;
+  text-align: center;
+}
+.error {
+  color: #a94442;
+  background: #f2dede;
+  border: 1px solid #a94442;
+  margin-bottom: 20px;
+}
+
+.error p {
+  margin-bottom: 0;
+}
+
+.admin-header {
+  margin-top: 2rem;
+}
+
+.admin-footer {
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.admin-footer p {
+  margin-bottom: 0;
+}
+.yellow {
+  font-style: normal;
+  color: #ffd369;
+}
+
+.chinese-font {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  margin-bottom: 1rem;
+}
+
+.user-info span {
+  text-align: center;
+  display: block;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 20px;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.stats a span {
+  color: #000;
+  font-size: 25px;
+}
+
+.admin-btn {
+  outline: none !important;
+  border: none;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 20px;
+  line-height: 2.5;
+  color: #fff;
+  width: 250px;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
+  padding: 0 25px;
+  transition: all 0.4s;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: block;
+  margin-top: 1rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.table-box {
+  overflow-x: auto;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+}
+
+.users {
+  font-family: "Noto Sans TC", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.users td,
+.users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.users tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.users tr:hover {
+  background-color: #ddd;
+}
+
+.users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #48c89e;
+  color: white;
+}
+
+.edit {
+  color: green;
+}
+
+.delete {
+  color: red;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.action .page-title {
+  margin-bottom: 1.5rem;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.action input {
+  padding: 5px 0;
+  width: 200px;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.topic {
+  font-weight: 500;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #ca6969;
+}
+
+.create-post-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.action .create-post-wrapper input.text {
+  width: 100%;
+  font-size: 20px;
+}
+
+.action .create-post-wrapper label {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 18px;
+}
+
+.action .create-post-wrapper .file {
+  display: none;
+}
+
+.action .create-post-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+.action .create-post-wrapper .create-btn {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 4px;
+}
+
+.action .create-post-wrapper .upload-img-btn {
+  margin-bottom: 2rem;
+}
+
+.dashboard .stats span {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+div.pages div.page,
+div.pages div.prev,
+div.pages div.next {
+  color: gray;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+
+div.pages div.active {
+  background: #ffd369;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.show {
+  display: block;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2rem;
+}
+
+.topics-area {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.topics-area .topics-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topics-card-header h1 {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.topics-card-content {
+  width: 100%;
+}
+
+.topics-button {
+  background-color: #357edd;
+  border: 0;
+  color: #fefbef;
+  font-family: "Noto Sans TC", sans-serif;
+  line-height: 2.5;
+  margin-top: 1.5rem;
+  width: 100%;
+  min-width: 10rem;
+  border-radius: 0.75rem;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  min-height: 3rem;
+  display: block;
+  text-align: center;
+}
+
+.created-time {
+  margin-left: 1rem;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.about-img img {
+  width: 30%;
+  border-radius: 50%;
+  margin-top: 3rem;
+}
+
+.about-header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-header h1 {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.about-text p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  word-break: break-word;
+  white-space: pre-line;
+  line-height: 2;
+  letter-spacing: 1.2px;
+  font-size: 18px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: normal;
+}
