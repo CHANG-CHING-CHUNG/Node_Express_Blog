@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./includes/head.ejs') %>
+  <body>
+    <%- include('./includes/navbar.ejs') %> %>
+    <section class="login">
+      <form class="login-div" action="/login" method="POST">
+        <span class="login-form-title"> 管理員登入 </span>
+        <% if (errorMessage.length) { %>
+        <div class="message error validation_errors"><%= errorMessage %></div>
+        <% } %>
+        <div class="input-wrapper">
+          <i class="fa fa-user input-icon"></i>
+          <input
+            type="text"
+            name="username"
+            placeholder="User name"
+            class="input user"
+          />
+        </div>
+        <div class="input-wrapper">
+          <i class="fa fa-lock input-icon"></i>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="input password"
+          />
+        </div>
+        <div class="from-login-btn-container">
+          <button class="login-btn">登入</button>
+        </div>
+      </form>
+    </section>
+    <!-- Footer -->
+    <%- include('./includes/footer.ejs') %>
+  </body>
+</html>

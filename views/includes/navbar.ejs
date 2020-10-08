@@ -3,27 +3,31 @@
     <a href="/" class="navbar-brand">John's <span>Blog</span></a>
     <div class="navbar-links">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item <%= url === '/' && 'active' %>">
           <a href="/" class="nav-link">首頁</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= url === '/post_list' && 'active' %>">
           <a href="/post_list" class="nav-link">文章列表</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= url === '/topic_area' && 'active' %>">
           <a href="/topic_area" class="nav-link">分類專區</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= url === '/about' && 'active' %>">
           <a href="/about" class="nav-link">關於我</a>
         </li>
 
-        <li class="nav-item">
+        <% if (username) { %>
+        <li class="nav-item <%= url === '/admin' && 'active' %>">
           <a href="/admin" class="nav-link">管理後台</a>
         </li>
+        <% } %>
 
-        <li class="nav-item">
+        <li class="nav-item <%= url === '/login' && 'active' %>">
+          <% if (!username) { %>
           <a href="/login" class="nav-link">登入</a>
-
+          <% } else { %>
           <a href="/logout" class="nav-link">登出</a>
+          <% } %>
         </li>
       </ul>
     </div>

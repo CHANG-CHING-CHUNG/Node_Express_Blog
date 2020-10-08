@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./includes/head.ejs') %>
+  <body>
+    <div class="page-container">
+      <div class="content-wrap">
+        <%- include('./includes/navbar.ejs') %>
+      <section class="admin-header">
+        <div class="container">
+          <div class="logo">
+            <h1>John's <span class="yellow">Blog</span>- <span class="chinese-font">管理後台<span></h1>
+          </div>
+                  <div class="user-info">
+              <span>你好，管理員 John</span>
+            </div>
+        </div>
+      </section>    
+        <div class="container dashboard">
+          <div class="stats">
+            <a href="/posts">
+              <span>目前總共有 2 篇文章</span>
+            </a>
+          </div>
+          <br>
+          <div>
+            <a  class="admin-btn" href="/posts">文章管理</a>
+          </div>
+        </div>
+      </div>
+    <!-- Footer -->
+    <%- include('./admin_includes/admin_footer.ejs') %>
+  </body>
+</html>

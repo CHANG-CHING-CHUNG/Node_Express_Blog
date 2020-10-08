@@ -5,6 +5,8 @@ const flash = require('connect-flash');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const blog_controller = require('./controllers/blog_controller');
+
 app.set('view engine', 'ejs');
 app.use(session({
   secret: 'keyboard cat',
@@ -16,16 +18,28 @@ app.use(bodyParser.json());
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
+  res.locals.id = req.session.id;
+  res.locals.url = req.originalUrl;
   res.locals.errorMessage = req.flash('errorMessage');
   next();
-})
-app.use('/css', express.static(__dirname + '/statics/css'))
-app.use('/images', express.static(__dirname + '/statics/images'))
+});
+app.use('/css', express.static(__dirname + '/statics/css'));
+app.use('/images', express.static(__dirname + '/statics/images'));
 
-app.get('/', (req, res) => {
-  res.render('index');
-})
+function redirectBack(req, res) {
+  res.redirect('back');
+}
+
+app.get('/', blog_controller.index);
+
+app.get('/login', blog_controller.login);
+app.post('/login', blog_controller.handleLogin, redirectBack);
+app.get('logout', blog_controller.logout);
+
+app.get('/about', blog_controller.about);
+app.get('/admin', blog_controller.admin);
+app.get('/posts', blog_controller.posts);
 
 app.listen(port, () => {
   console.log(`Server is running...at${port}`);
-})
+});
