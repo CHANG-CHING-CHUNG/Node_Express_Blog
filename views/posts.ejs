@@ -1,120 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./includes/head.ejs') %>
+<%- include('./includes/head.ejs') %>
 
-  <body>
-    <div class="page-container">
-      <div class="content-wrap">
-        <%- include('./includes/navbar.ejs') %>
-        <section class="admin-header">
-          <div class="container">
-            <div class="logo">
-              <h1>
-                John's <span class="yellow">Blog</span>-
-                <span class="chinese-font">管理後台<span></span></span>
-              </h1>
-            </div>
-            <div class="user-info">
-              <span>你好，管理員 John</span>
-            </div>
-          </div>
-        </section>
+<body>
+  <div class="page-container">
+    <div class="content-wrap">
+      <%- include('./includes/navbar.ejs') %>
+      <section class="admin-header">
         <div class="container">
-          <div class="menu">
-            <div class="card">
-              <div class="card-content">
-                <a
-                  class="admin-btn"
-                  href="http://www.mentor4th-john.tw/blog/admin/create_post.php"
-                  >新增文章</a
-                >
-                <a
-                  class="admin-btn"
-                  href="http://www.mentor4th-john.tw/blog/admin/posts.php"
-                  >管理文章</a
-                >
-                <a
-                  class="admin-btn"
-                  href="http://www.mentor4th-john.tw/blog/admin/topics.php"
-                  >管理類別</a
-                >
-              </div>
-            </div>
+          <div class="logo">
+            <h1>
+              John's <span class="yellow">Blog</span>-
+              <span class="chinese-font">管理後台<span></span></span>
+            </h1>
           </div>
-          <div class="table-box center" style="width: 80%">
-            <table class="users">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>作者</th>
-                  <th>標題</th>
-                  <th><small>Edit</small></th>
-                  <th><small>Delete</small></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>John</td>
-                  <td>
-                    <a
-                      target="_blank"
-                      href="http://www.mentor4th-john.tw/blog/single_post.php?id=18"
-                    >
-                      Docker for beginners
-                    </a>
-                  </td>
-                  <td>
-                    <a
-                      class="fa fa-pencil btn edit"
-                      href="create_post.php?edit-post=18"
-                      aria-hidden="true"
-                    >
-                    </a>
-                  </td>
-                  <td>
-                    <a
-                      class="fa fa-trash btn delete"
-                      href="create_post.php?delete-post=18"
-                      aria-hidden="true"
-                    >
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>John</td>
-                  <td>
-                    <a
-                      target="_blank"
-                      href="http://www.mentor4th-john.tw/blog/single_post.php?id=19"
-                    >
-                      程式導師實驗計劃第四期開始報名囉！
-                    </a>
-                  </td>
-                  <td>
-                    <a
-                      class="fa fa-pencil btn edit"
-                      href="create_post.php?edit-post=19"
-                      aria-hidden="true"
-                    >
-                    </a>
-                  </td>
-                  <td>
-                    <a
-                      class="fa fa-trash btn delete"
-                      href="create_post.php?delete-post=19"
-                      aria-hidden="true"
-                    >
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="user-info">
+            <span>你好，管理員 <%= nickname %></span>
           </div>
         </div>
+      </section>
+      <div class="container">
+        <div class="menu">
+          <div class="card">
+            <div class="card-content">
+              <a class="admin-btn" href="/create_post">新增文章</a>
+              <a class="admin-btn" href="/posts">管理文章</a>
+              <a class="admin-btn" href="/topics">管理類別</a>
+            </div>
+          </div>
+        </div>
+        <div class="table-box center" style="width: 80%">
+          <table class="users">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>作者</th>
+                <th>標題</th>
+                <th><small>Edit</small></th>
+                <th><small>Delete</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(allPosts.length) { allPosts.forEach((post) => { %>
+
+              <tr>
+                <td><%= post.id %></td>
+                <td><%= post.User.nickname %></td>
+                <td>
+                  <a target="_blank" href="/single_post/<%= post.id %>">
+                    <%= post.title %>
+                  </a>
+                </td>
+                <td>
+                  <a class="fa fa-pencil btn edit" href="/edit_post/<%= post.id %>" aria-hidden="true">
+                  </a>
+                </td>
+                <td>
+                  <a class="fa fa-trash btn delete" href="/delete_post/<%= post.id %>" aria-hidden="true">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <% }) } else { %>
+                <h1 style="text-align: center; margin-top: 20px">
+                  資料庫裡沒有任何文章存在
+                </h1>
+                <% } %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <%- include('./admin_includes/admin_footer.ejs') %>
     </div>
-  </body>
+    <%- include('./admin_includes/admin_footer.ejs') %>
+  </div>
+</body>
+
 </html>

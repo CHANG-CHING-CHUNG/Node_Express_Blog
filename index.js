@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
-  res.locals.id = req.session.id;
+  res.locals.userid = req.session.userid;
+  res.locals.nickname = req.session.nickname;
   res.locals.url = req.originalUrl;
   res.locals.errorMessage = req.flash('errorMessage');
   next();
@@ -34,11 +35,19 @@ app.get('/', blog_controller.index);
 
 app.get('/login', blog_controller.login);
 app.post('/login', blog_controller.handleLogin, redirectBack);
-app.get('logout', blog_controller.logout);
+app.get('/logout', blog_controller.logout);
 
 app.get('/about', blog_controller.about);
 app.get('/admin', blog_controller.admin);
 app.get('/posts', blog_controller.posts);
+app.get('/topics', blog_controller.topics);
+
+app.post('/create_topic', blog_controller.createTopic, redirectBack);
+app.get('/delete_topic/:id', blog_controller.deleteTopic);
+app.get('/edit_topic', (req, res) => {
+  res.locals.edit_topic = true;
+  res.redirect('/topics')
+})
 
 app.listen(port, () => {
   console.log(`Server is running...at${port}`);

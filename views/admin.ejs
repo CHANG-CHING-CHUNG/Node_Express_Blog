@@ -11,14 +11,14 @@
             <h1>John's <span class="yellow">Blog</span>- <span class="chinese-font">管理後台<span></h1>
           </div>
                   <div class="user-info">
-              <span>你好，管理員 John</span>
+              <span>你好，管理員 <%= nickname %></span>
             </div>
         </div>
       </section>    
         <div class="container dashboard">
           <div class="stats">
             <a href="/posts">
-              <span>目前總共有 2 篇文章</span>
+              <span>目前總共有 <%= countOfPosts %> 篇文章</span>
             </a>
           </div>
           <br>
