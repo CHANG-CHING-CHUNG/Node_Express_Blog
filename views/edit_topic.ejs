@@ -26,12 +26,12 @@
 
           <div class="action">
             <h1 class="page-title">新增/編輯 類別</h1>
-            <form method="post" action="/create_topic">
+            <form method="post" action="/update_topic/<%= topicId %> ">
               <% if (errorMessage.length) { %>
                 <div class="message error validation_errors"><%= errorMessage %></div>
               <% } %>
-              <input type="text" name="topic_name" value="" placeholder="類別名稱">
-              <button type="submit" class="login-btn">新增</button>
+              <input type="text" name="topic_name" value="<%= topic_name %> " placeholder="類別名稱">
+              <button type="submit" class="login-btn">更新</button>
             </form>
           </div>
 

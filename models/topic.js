@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Topic.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    is_deleted: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Topic',

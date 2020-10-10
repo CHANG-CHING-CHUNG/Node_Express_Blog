@@ -44,10 +44,19 @@ app.get('/topics', blog_controller.topics);
 
 app.post('/create_topic', blog_controller.createTopic, redirectBack);
 app.get('/delete_topic/:id', blog_controller.deleteTopic);
-app.get('/edit_topic', (req, res) => {
-  res.locals.edit_topic = true;
-  res.redirect('/topics')
-})
+app.get('/edit_topic/:id', blog_controller.edit_topic);
+app.post('/update_topic/:id', blog_controller.handleUpdateTopic, redirectBack);
+
+
+app.get('/post_list/', blog_controller.post_list, redirectBack);
+app.get('/post_list/:pageNum', blog_controller.post_list, redirectBack);
+app.get('/single_post/:id', blog_controller.single_post,redirectBack);
+app.get('/filtered_posts/:id',blog_controller.filtered_posts);
+app.get('/topic_area',blog_controller.topic_area);
+
+app.get('/delete_post/:id', blog_controller.deletePost);
+app.get('/create_post', blog_controller.create_post);
+app.post('/add_post', blog_controller.handleCreatePost)
 
 app.listen(port, () => {
   console.log(`Server is running...at${port}`);

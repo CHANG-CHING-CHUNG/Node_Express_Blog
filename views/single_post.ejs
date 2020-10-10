@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./includes/head.ejs') %>
+
+<body>
+  <%- include('./includes/navbar.ejs') %>
+  <div class="content">
+    <div class="container">
+      <div class="row content-wrapper">
+        <div class="full-post-div">
+            <span class="topic"><%= postAndTopic.Topic.name %> </span>
+            <span class="created-time"><%= formattedDate %> </span>
+            <div class="post-img-box">
+              <img class="post-img" src="/images/<%= postAndTopic.Post.image %>">
+            </div>
+            <h2 class="post-title"><%= postAndTopic.Post.title %></h2>
+            <div class="post-body-div">
+              <%- postBody %> 
+            </div>
+        </div>
+        <div class="post-sidebar">
+          <div class="card">
+            <div class="card-header">
+              <h3>主題</h3>
+            </div>
+            <% topics.forEach(topic => { %> 
+            <div class="card-content">
+                <a 
+                  href="/filtered_posts/<%= topic.id %> ">
+                  <%= topic.name %> 
+                  <span class="arrow-forward">></span>
+                </a> 
+            </div>
+          <% })  %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <%- include('./includes/footer.ejs') %>
+</body>
+
+</html>

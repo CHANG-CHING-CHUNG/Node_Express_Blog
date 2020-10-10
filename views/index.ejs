@@ -4,41 +4,39 @@
   <body>
     <%- include('./includes/navbar.ejs') %> <%- include('./includes/banner.ejs')
     %>
-    <section class="content">
-      <div class="container">
-        <div class="row column">
-          <div class="case">
-            <div class="row">
-              <div class="img-box d-flex">
-                <a
-                  href="#"
-                  class="img"
-                  style="
-                    background-image: url(http://www.mentor4th-john.tw/blog/static/images/logo.webp);
-                  "
-                ></a>
-              </div>
-              <div class="text-box d-flex">
-                <div class="text">
-                  <a href="#" class="subheading">後端應用</a>
-                  <h2>
-                    <a href="#">Docker for beginners</a>
-                  </h2>
-                  <div class="media-social">
-                    <a href="#">
-                      <span class="icon-github"></span>
-                    </a>
-                  </div>
-                  <div class="meta">
-                    <span class="date">September 17, 2020</span>
+  <section class="content">
+    <div class="container">
+      <div class="row column">
+        <% postAndTopic.forEach(post => { %> 
+          <% if (post.Post.is_deleted != 1) { %> 
+            <div class="case">
+              <div class="row">
+                <div class="img-box d-flex">
+                  <a href="/single_post/<%= post.Post.id %>" class="img" style="background-image:url('/images/<%= post.Post.image %>');"></a>
+                </div>
+                <div class="text-box d-flex">
+                  <div class="text">
+                    <a href="/filtered_posts/<%= post.Topic.id %>" class="subheading"><%= post.Topic.name %></a>
+                    <h2>
+                      <a href="/single_post/<%= post.Post.id %>"><%= post.Post.title %></a>
+                    </h2>
+                    <div class="media-social">
+                      <a href="#">
+                        <span class="icon-github"></span>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <% const date = new Date(post.Post.createdAt) %>
+                      <span class="date"><%= date.toDateString() %></span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          <% } %>
+         <% }) %> 
       </div>
-    </section>
+  </section>
     <!-- Footer -->
     <%- include('./includes/footer.ejs') %>
   </body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./includes/head.ejs') %>
+
+<body>
+  <%- include('./includes/navbar.ejs') %>
+    %>
+  <section class="content">
+    <div class="container">
+      <h2 class="content-title">所有<%= postAndTopic[0].Topic.name %>類別的文章</h2>
+      <div class="row column">
+        <% postAndTopic.forEach(post => { %> 
+        <div class="case">
+          <div class="row">
+            <div class="img-box d-flex">
+              <a href="/single_post/<%= post.Post.id %>" class="img" style="background-image:url('/images/<%= post.Post.image %>');"></a>
+            </div>
+            <div class="text-box d-flex">
+              <div class="text">
+                <a href="/filtered_posts/<%= post.Topic.id %>" class="subheading"><%= post.Topic.name %></a>
+                <h2>
+                  <a href="/single_post/<%= post.Post.id %>"><%= post.Post.title %></a>
+                </h2>
+                <div class="media-social">
+                  <a href="#">
+                    <span class="icon-github"></span>
+                  </a>
+                </div>
+                <div class="meta">
+                  <% const date = new Date(post.Post.createdAt) %>
+                  <span class="date"><%= date.toDateString() %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %> 
+      </div>
+      <div class="row mt-5 text-center">
+        <ul class="col">
+          <li>
+            <a href="#">&lt;</a>
+          </li>
+          <li>
+            <a href="#" class="active">1</a>
+          </li>
+          <li>
+            <a href="#">2</a>
+          </li>
+          <li>
+            <a href="#">&gt;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <%- include('./includes/footer.ejs') %>
+</body>
+
+</html>
