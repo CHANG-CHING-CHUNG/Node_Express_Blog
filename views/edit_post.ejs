@@ -31,7 +31,7 @@
         </div>
         <div class="action create-post-div">
           <div class="create-post-wrapper">
-            <h1 class="page-title">新增 文章</h1>
+            <h1 class="page-title">編輯 文章</h1>
 
               <% if (errorMessage.length) { %>
               <div class="message error validation_errors">
@@ -39,12 +39,12 @@
               </div>
               <% } %>
 
-            <form method="post" action="/add_post" enctype="multipart/form-data">
+            <form method="post" action="/update_post" enctype="multipart/form-data">
 
-              <input type="hidden" name="post_id" value="">
+              <input type="hidden" name="post_id" value="<%= post.id%>">
 
 
-              <input class="text" type="text" name="title" value="" placeholder="標題">
+              <input class="text" type="text" name="title" value="<%= post.title %>" placeholder="標題">
               <div class="upload-img-btn">
                 <label style="float: left; margin: 5px auto 5px;">文章圖片</label>
                 <label class="create-btn">
@@ -52,7 +52,7 @@
                   <i class="fa fa-photo"></i> 上傳圖片
                 </label>
               </div>
-              <textarea name="body" id="body" cols="30" rows="10"></textarea>
+              <textarea name="body" id="body" cols="30" rows="10"><%= post.body %></textarea>
 
               <div>
                 <select name="topic_id">
@@ -65,7 +65,7 @@
 
                 </select>
 
-                <button type="submit" class="btn" >新增文章</button>
+                <button type="submit" class="btn" >更新</button>
 
 
               </div>

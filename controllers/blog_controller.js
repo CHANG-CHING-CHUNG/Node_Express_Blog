@@ -104,7 +104,6 @@ const blog_controller = {
     const countOfPosts = await Post.count();
     const totalPags = Math.floor(countOfPosts / 5);
 
-    console.log(totalPags);
     if (req.params.pageNum) {
       if (req.params.pageNum < 1 || req.params.pageNum > totalPags + 1) {
         return next();
@@ -134,14 +133,15 @@ const blog_controller = {
     res.render('edit_topic', { topicId : id , topic_name: topic.name});
   },
 
-  create_post: (req, res,next) => {
+  create_post: async (req, res,next) => {
     const { userid } = req.session;
 
     if (!userid) {
       return next();
     }
+    const allTopics = await blog_controller.getAllTopics();
 
-    res.render('create_post');
+    res.render('create_post', { allTopics:allTopics });
   },
 
   handleCreatePost: async (req, res, next) => {
@@ -151,9 +151,9 @@ const blog_controller = {
       return next();
     }
 
-    const { title, body } = req.fields;
-    if (!title || !body || !req.files.featured_image.size) {
-      req.flash('errorMessage', '標題、圖片、內容不得為空');
+    const { title, body, topic_id } = req.fields;
+    if (!title || !body || !topic_id || !req.files.featured_image.size) {
+      req.flash('errorMessage', '標題、圖片、內容及類別不得為空');
       return next();
     };
     let oldpath = req.files.featured_image.path;
@@ -162,13 +162,81 @@ const blog_controller = {
       if(err) throw err;
       console.log("uploaded")
     })
-    await Post.create({
+    const newPost = await Post.create({
       user_id:userid,
       title:title,
       body:body,
       image:req.files.featured_image.name
+    });
+
+    Post_topic.create({
+      PostId: newPost.id,
+      TopicId: topic_id
     })
     res.redirect('/create_post')
+  },
+
+  edit_post: async (req, res, next) => {
+    const { userid } = req.session;
+    if (!userid) {
+      return next();
+    }
+    const { postId } = req.params;
+    if (!postId) {
+      return next();
+    };
+    const post = await Post.findAll({
+      where: {
+        id: postId
+      }
+    })
+    let topicOfPost = await Post_topic.findAll({
+      include: [{model: Topic, as: 'Topic'}],
+      where:{
+        PostId: postId
+      }
+    });
+    topicOfPost = topicOfPost[0].Topic;
+
+    const allTopics = await blog_controller.getAllTopics();
+    res.render('edit_post', { allTopics:allTopics, post:post[0], topicOfPost:topicOfPost });
+  },
+
+  handleUpdatePost: async (req, res, next) => {
+    const { userid } = req.session;
+    if (!userid) {
+      return next();
+    }
+
+    const { post_id,title, body, topic_id } = req.fields;
+    if (!post_id || !title || !body || !topic_id || !req.files.featured_image.size) {
+      req.flash('errorMessage', '標題、圖片、內容及類別不得為空');
+      return next();
+    };
+    let oldpath = req.files.featured_image.path;
+    let newpath = `./statics/images/${req.files.featured_image.name}`;
+    fs.rename(oldpath, newpath, (err) => {
+      if(err) throw err;
+      console.log("uploaded")
+    })
+    await Post.update({
+      title:title,
+      body:body,
+      image:req.files.featured_image.name
+    },{
+      where: {
+        id:post_id
+      }
+    });
+
+    Post_topic.update({
+      TopicId: topic_id
+    }, {
+      where: {
+        PostId:post_id
+      }
+    })
+    res.redirect('/posts')
   },
 
   handleLogin: (req, res, next) => {

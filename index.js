@@ -16,7 +16,8 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(formidableMiddleware())
+app.use('/add_post',formidableMiddleware());
+app.use('/update_post',formidableMiddleware());
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
@@ -58,7 +59,9 @@ app.get('/topic_area',blog_controller.topic_area);
 
 app.get('/delete_post/:id', blog_controller.deletePost);
 app.get('/create_post', blog_controller.create_post, redirectBack);
-app.post('/add_post', blog_controller.handleCreatePost,redirectBack)
+app.post('/add_post', blog_controller.handleCreatePost,redirectBack);
+app.get('/edit_post/:postId',blog_controller.edit_post,redirectBack);
+app.post('/update_post', blog_controller.handleUpdatePost,redirectBack);
 
 app.listen(port, () => {
   console.log(`Server is running...at${port}`);
