@@ -1,5 +1,5 @@
 const db =require('../models');
-const formidable = require('formidable'); 
+const fs = require('fs'); 
 const Post = db.Post;
 const User = db.User;
 const Topic = db.Topic;
@@ -134,21 +134,39 @@ const blog_controller = {
     res.render('edit_topic', { topicId : id , topic_name: topic.name});
   },
 
-  create_post: (req, res) => {
+  create_post: (req, res,next) => {
+    const { userid } = req.session;
+
+    if (!userid) {
+      return next();
+    }
+
     res.render('create_post');
   },
 
-  handleCreatePost: async (req, res) => {
-    const form = new formidable.IncomingForm();
-    form.parse(req, (err, fields, files) => {
-      console.log(fields)
-      // let oldpath = files.image.path;
-      // let newpath = `C:/Users/kanga/Desktop/image/${files.image.name}`;
-      // fs.rename(oldpath, newpath, (err) => {
-      //   if(err) throw err;
-      //   console.log("uploaded")
-      // })
-      // res.json(files)
+  handleCreatePost: async (req, res, next) => {
+    const { userid } = req.session;
+
+    if (!userid) {
+      return next();
+    }
+
+    const { title, body } = req.fields;
+    if (!title || !body || !req.files.featured_image.size) {
+      req.flash('errorMessage', '標題、圖片、內容不得為空');
+      return next();
+    };
+    let oldpath = req.files.featured_image.path;
+    let newpath = `./statics/images/${req.files.featured_image.name}`;
+    fs.rename(oldpath, newpath, (err) => {
+      if(err) throw err;
+      console.log("uploaded")
+    })
+    await Post.create({
+      user_id:userid,
+      title:title,
+      body:body,
+      image:req.files.featured_image.name
     })
     res.redirect('/create_post')
   },

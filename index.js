@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const formidableMiddleware = require('express-formidable');
 const session = require('express-session');
 const flash = require('connect-flash');
 const app = express();
@@ -15,6 +16,7 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(formidableMiddleware())
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
@@ -55,8 +57,8 @@ app.get('/filtered_posts/:id',blog_controller.filtered_posts);
 app.get('/topic_area',blog_controller.topic_area);
 
 app.get('/delete_post/:id', blog_controller.deletePost);
-app.get('/create_post', blog_controller.create_post);
-app.post('/add_post', blog_controller.handleCreatePost)
+app.get('/create_post', blog_controller.create_post, redirectBack);
+app.post('/add_post', blog_controller.handleCreatePost,redirectBack)
 
 app.listen(port, () => {
   console.log(`Server is running...at${port}`);

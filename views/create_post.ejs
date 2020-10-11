@@ -33,9 +33,12 @@
           <div class="create-post-wrapper">
             <h1 class="page-title">新增/編輯 文章</h1>
 
-            <div class="message error validation_errors">
-              <p></p>
-            </div>
+              <% if (errorMessage.length) { %>
+              <div class="message error validation_errors">
+                <p><%= errorMessage %></p>
+              </div>
+              <% } %>
+
             <form method="post" action="/add_post" enctype="multipart/form-data">
 
               <input type="hidden" name="post_id" value="">
