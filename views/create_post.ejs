@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./includes/head.ejs') %>
+
+<body>
+  <div class="page-container">
+    <div class="content-wrap">
+      <%- include('./includes/navbar.ejs') %>
+      <section class="admin-header">
+        <div class="container">
+          <div class="logo">
+            <h1>
+              John's <span class="yellow">Blog</span>-
+              <span class="chinese-font">管理後台<span></span></span>
+            </h1>
+          </div>
+          <div class="user-info">
+            <span>你好，管理員 <%= nickname %></span>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="menu">
+          <div class="card">
+            <div class="card-content">
+              <a class="admin-btn" href="/create_post">新增文章</a>
+              <a class="admin-btn" href="/posts">管理文章</a>
+              <a class="admin-btn" href="/topics">管理類別</a>
+            </div>
+          </div>
+        </div>
+        <div class="action create-post-div">
+          <div class="create-post-wrapper">
+            <h1 class="page-title">新增 文章</h1>
+
+              <% if (errorMessage.length) { %>
+              <div class="message error validation_errors">
+                <p><%= errorMessage %></p>
+              </div>
+              <% } %>
+
+            <form method="post" action="/add_post" enctype="multipart/form-data">
+
+              <input type="hidden" name="post_id" value="">
+
+
+              <input class="text" type="text" name="title" value="" placeholder="標題">
+              <div class="upload-img-btn">
+                <label style="float: left; margin: 5px auto 5px;">文章圖片</label>
+                <label class="create-btn">
+                  <input class="file" type="file" name="featured_image">
+                  <i class="fa fa-photo"></i> 上傳圖片
+                </label>
+              </div>
+              <textarea name="body" id="body" cols="30" rows="10"></textarea>
+
+              <div>
+                <select name="topic_id">
+                  <option value="" selected disabled>選擇類別</option>
+                  <% allTopics.forEach(topic => { %>
+                  <option value="<%=topic.id%>">
+                    <%= topic.name %>
+                  </option>
+                  <% }) %>
+
+                </select>
+
+                <button type="submit" class="btn" >新增文章</button>
+
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('./admin_includes/admin_footer.ejs') %>
+  </div>
+</body>
+
+</html>
+<script>
+  CKEDITOR.replace('body');
+
+</script>
