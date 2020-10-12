@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:migrate":"npx sequelize-cli db:migrate",
+    "db:seed:all":"npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mon": "nodemon index.js"
+    "mon": "nodemon index.js",
+    "start":"npm run db:migrate && npm run db:seed:all && node index.js"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +25,7 @@
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
     "formidable": "^1.2.2",
+    "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
