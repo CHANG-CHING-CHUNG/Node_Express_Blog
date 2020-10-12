@@ -158,10 +158,15 @@ const blog_controller = {
     };
     let oldpath = req.files.featured_image.path;
     let newpath = `./statics/images/${req.files.featured_image.name}`;
-    fs.rename(oldpath, newpath, (err) => {
+    fs.copyFile(oldpath, newpath, (err) => {
       if(err) throw err;
       console.log("uploaded")
+      fs.unlink(oldpath, (err) => {
+        if (err) throw err;
+        console.log('the old file has been deleted');
+      })
     })
+    
     const newPost = await Post.create({
       user_id:userid,
       title:title,
@@ -169,7 +174,7 @@ const blog_controller = {
       image:req.files.featured_image.name
     });
 
-    Post_topic.create({
+    await Post_topic.create({
       PostId: newPost.id,
       TopicId: topic_id
     })
@@ -215,9 +220,13 @@ const blog_controller = {
     };
     let oldpath = req.files.featured_image.path;
     let newpath = `./statics/images/${req.files.featured_image.name}`;
-    fs.rename(oldpath, newpath, (err) => {
+    fs.copyFile(oldpath, newpath, (err) => {
       if(err) throw err;
       console.log("uploaded")
+      fs.unlink(oldpath, (err) => {
+        if (err) throw err;
+        console.log('the old file has been deleted');
+      })
     })
     await Post.update({
       title:title,
